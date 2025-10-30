@@ -7,19 +7,28 @@ import Register from "./pages/Register";
 import "./styles/app.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ProtectedRoute from "./components/ProtectedRoute";
+
 export default function App() {
   return (
     <Router>
-      <Navbar/>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/create" element={<ProductForm />} />
+        <Route
+          path="/create"
+          element={
+            <ProtectedRoute>
+              <ProductForm />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/edit/:id" element={<ProductForm />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
-      <Footer/>
-   </Router>
+      <Footer />
+    </Router>
   );
 }
