@@ -1,78 +1,48 @@
 import { useEffect, useState } from "react";
-import { getProducts, deleteProduct } from "../api";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import { useNavigate } from "react-router-dom";
+import { getProducts } from "../api";
+import { Link } from "react-router-dom";
+import "./Home.css";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const { data } = await getProducts();
-        setProducts(data);
-      } catch (err) {
-        console.error("Error fetching products:", err);
-      }
-    };
-    fetchProducts();
+    getProducts()
+      .then((res) => setProducts(res.data))
+      .catch((err) => console.error("Error loading products:", err));
   }, []);
 
-  const handleDelete = async (id) => {
-    if (window.confirm("Are you sure you want to delete this product?")) {
-      await deleteProduct(id);
-      setProducts(products.filter((p) => p._id !== id));
-    }
-  };
-
   return (
-    <>
-      <Navbar />
+    <div className="home-container">
+      <header className="hero-section">
+        <h1>Welcome to ShopSmart 🛍️</h1>
+        <p>Discover our curated collection of the latest products</p>
+        <Link to="/add-product" className="btn-primary">
+          + Add New Product
+        </Link>
+      </header>
 
-      <div className="home-container">
-        <h1 className="home-title">Available Products</h1>
-        <div className="product-grid">
-          {products.length === 0 ? (
-            <p className="no-products">No products available.</p>
-          ) : (
-            products.map((product) => (
-              <div key={product._id} className="product-card">
-                <img
-                  src={product.image || "https://via.placeholder.com/150"}
-                  alt={product.name}
-                />
+      <section className="product-list">
+        {products.length > 0 ? (
+          products.map((product) => (
+            <div key={product._id} className="product-card">
+              <img
+                src={product.image || "https://via.placeholder.com/250"}
+                alt={product.name}
+              />
+              <div className="product-info">
                 <h3>{product.name}</h3>
-                <p className="price">${product.price}</p>
-
-                <div className="button-group">
-                  <button
-                    className="btn view"
-                    onClick={() => navigate(`/product/${product._id}`)}
-                  >
-                    View
-                  </button>
-                  <button
-                    className="btn edit"
-                    onClick={() => navigate(`/edit/${product._id}`)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="btn delete"
-                    onClick={() => handleDelete(product._id)}
-                  >
-                    Delete
-                  </button>
-                </div>
+                <p>${product.price}</p>
+                <Link to={`/product/${product._id}`} className="btn-secondary">
+                  View Details
+                </Link>
               </div>
-            ))
-          )}
-        </div>
-      </div>
-
-      <Footer />
-    </>
+            </div>
+          ))
+        ) : (
+          <p className="no-products">No products available</p>
+        )}
+      </section>
+    </div>
   );
 }
