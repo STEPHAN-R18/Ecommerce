@@ -5,7 +5,7 @@ import User from "../models/User.js";
 
 const router = express.Router();
 
-// ✅ Register
+// ✅ Register and auto-login
 router.post("/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -19,13 +19,23 @@ router.post("/register", async (req, res) => {
     const user = new User({ name, email, password: hashedPassword });
     await user.save();
 
-    res.status(201).json({ message: "User registered successfully" });
+    // ✅ Generate token right after registration
+    const token = jwt.sign(
+      { id: user._id, name: user.name },
+      process.env.JWT_SECRET || "secretkey",
+      { expiresIn: "1d" }
+    );
+
+    res.status(201).json({
+      token,
+      user: { id: user._id, name: user.name, email: user.email },
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
-// ✅ Login
+// ✅ Login route
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -43,7 +53,10 @@ router.post("/login", async (req, res) => {
       { expiresIn: "1d" }
     );
 
-    res.json({ token, user: { id: user._id, name: user.name, email: user.email } });
+    res.json({
+      token,
+      user: { id: user._id, name: user.name, email: user.email },
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

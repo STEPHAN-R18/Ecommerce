@@ -18,8 +18,13 @@ export default function Login() {
 
     try {
       const { data } = await API.post("/auth/login", formData);
+
+      // ✅ Save both token and user info
       localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
       navigate("/");
+      window.location.reload(); // refresh to update Navbar immediately
     } catch (err) {
       setError(err.response?.data?.message || "Invalid credentials");
     }

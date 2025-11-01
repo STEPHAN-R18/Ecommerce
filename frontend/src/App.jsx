@@ -8,6 +8,8 @@ import "./styles/app.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Profile from "./pages/Profile.jsx";
+<Route path="/profile" element={<Profile />} />
 
 export default function App() {
   return (
@@ -15,6 +17,7 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
         <Route
           path="/create"
           element={

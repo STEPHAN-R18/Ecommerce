@@ -1,25 +1,59 @@
+// frontend/src/pages/Home.jsx
 import { useEffect, useState } from "react";
-import { getProducts } from "../api";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import "./Home.css";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState("");
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    getProducts()
-      .then((res) => setProducts(res.data))
-      .catch((err) => console.error("Error loading products:", err));
-  }, []);
+    fetchProducts();
+  }, [category, search]);
+
+  const fetchProducts = async () => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/api/products?category=${category}&search=${search}`
+      );
+      setProducts(res.data);
+    } catch (err) {
+      console.error("Error loading products:", err);
+    }
+  };
 
   return (
     <div className="home-container">
       <header className="hero-section">
-        <h1>Welcome to ShopSmart 🛍️</h1>
-        <p>Discover our curated collection of the latest products</p>
-        <Link to="/add-product" className="btn-primary">
-          + Add New Product
-        </Link>
+        <div className="hero-text">
+          <h1>Welcome to ShopSmart 🛍️</h1>
+          <p>Discover our curated collection of the latest products.</p>
+        </div>
+
+        <div className="filters-inline">
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Search products..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+
+          <select
+            className="category-select"
+            onChange={(e) => setCategory(e.target.value)}
+            value={category}
+            aria-label="Filter by category"
+          >
+            <option value="">All Categories</option>
+            <option value="electronics">Electronics</option>
+            <option value="fashion">Fashion</option>
+            <option value="books">Books</option>
+            <option value="home">Home & Kitchen</option>
+          </select>
+        </div>
       </header>
 
       <section className="product-list">
@@ -29,10 +63,11 @@ export default function Home() {
               <img
                 src={product.image || "https://via.placeholder.com/250"}
                 alt={product.name}
+                className="product-image"
               />
               <div className="product-info">
                 <h3>{product.name}</h3>
-                <p>${product.price}</p>
+                <p>₹{product.price}</p>
                 <Link to={`/product/${product._id}`} className="btn-secondary">
                   View Details
                 </Link>
@@ -40,7 +75,7 @@ export default function Home() {
             </div>
           ))
         ) : (
-          <p className="no-products">No products available</p>
+          <p className="no-products">No products found</p>
         )}
       </section>
     </div>
