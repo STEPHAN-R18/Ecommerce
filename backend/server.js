@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 
 import productRoutes from "./routes/products.js";
 import authRoutes from "./routes/authRoutes.js";
-import paymentRoutes from "./routes/payment.js";
+import paymentRoutes from "./routes/paymentRoutes.js";
 
 dotenv.config();
 
