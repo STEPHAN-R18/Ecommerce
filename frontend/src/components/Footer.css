@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .footer {
   background: linear-gradient(135deg, #0070f3, #00bcd4);
   color: white;
@@ -23,3 +24,30 @@
   font-size: 0.9rem;
   opacity: 0.9;
 }
+=======
+.footer {
+  background: linear-gradient(135deg, #0070f3, #00bcd4);
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 0.95rem;
+}
+
+.footer .brand {
+  font-weight: 600;
+  color: #fff;
+}
+
+.footer .tagline {
+  font-style: italic;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+>>>>>>> 72809590aa096b79a315a1fa15c7eceb21ddf3c4
