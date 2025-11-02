@@ -47,7 +47,7 @@ npm start
 
 Backend will run at:
 👉 http://localhost:5000
-------------------------------------------------
+------------------------------------------------------------------------------------------------
 
 3️⃣ Setup the frontend
 cd ../frontend
@@ -61,7 +61,7 @@ npm run dev
 
 Frontend will run at:
 👉 http://localhost:5173
-
+------------------------------------------------------------------------------------------------
 
 🧑‍💻 Developer Notes
 + Make sure MongoDB connection is valid before running backend.
@@ -69,16 +69,17 @@ Frontend will run at:
 + Then run frontend (npm run dev in frontend).
 + If git push fails, commit and pull before retrying.
 + To resolve merge conflicts, open VS Code Source Control → Merge Changes → Resolve → Commit → Push.
+------------------------------------------------------------------------------------------------
 
 🧠 Key Files Explained
 
-backend/models/Product.js → Defines Product schema (name, price, description, category, image)
-backend/routes/productRoutes.js → API endpoints for fetching products
-backend/seed.js → Inserts demo data (Books, Electronics, Fashion, Home & Kitchen)
+backend/models/Product.js                 → Defines Product schema (name, price, description, category, image)
+backend/routes/productRoutes.js           → API endpoints for fetching products
+backend/seed.js                           → Inserts demo data (Books, Electronics, Fashion, Home & Kitchen)
 
-frontend/src/components/ProductList.jsx → Displays all products with category filter
+frontend/src/components/ProductList.jsx   → Displays all products with category filter
 frontend/src/components/ProductDetail.jsx → Flipkart-style product details page
-frontend/src/components/Header.jsx → Contains search bar, cart, and profile options
+frontend/src/components/Header.jsx        → Contains search bar, cart, and profile options
 
 
 
