@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema(
@@ -13,7 +13,7 @@ const productSchema = new mongoose.Schema(
 );
 
 export default mongoose.model("Product", productSchema);
-=======
+
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema(
@@ -29,4 +29,4 @@ const productSchema = new mongoose.Schema(
 const Product = mongoose.model("Product", productSchema);
 
 export default Product;
->>>>>>> 72809590aa096b79a315a1fa15c7eceb21ddf3c4
+

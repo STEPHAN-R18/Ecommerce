@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import Product from "./models/Product.js";
@@ -295,7 +295,7 @@ const seedProducts = async () => {
 };
 
 seedProducts();
-=======
+
 const mongoose = require('mongoose')
 const Product = require('./models/Product')
 require('dotenv').config()
@@ -312,4 +312,4 @@ mongoose.connect(process.env.MONGO_URI).then(async () => {
   console.log('Data seeded!')
   process.exit()
 })
->>>>>>> 72809590aa096b79a315a1fa15c7eceb21ddf3c4
+

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -138,7 +138,7 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
-=======
+
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getProductById } from "../api";
@@ -199,4 +199,4 @@ export default function ProductDetail() {
     </>
   );
 }
->>>>>>> 72809590aa096b79a315a1fa15c7eceb21ddf3c4
+

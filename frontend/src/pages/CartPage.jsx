@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CartPage.css";
@@ -92,7 +92,7 @@ export default function CartPage() {
     </div>
   );
 }
-=======
+
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
@@ -125,4 +125,4 @@ export default function CartPage() {
     </div>
   );
 }
->>>>>>> 72809590aa096b79a315a1fa15c7eceb21ddf3c4
+

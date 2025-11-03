@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext();
@@ -37,7 +37,7 @@ export const CartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
-=======
+
 import { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext();
@@ -76,4 +76,4 @@ export const CartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
->>>>>>> 72809590aa096b79a315a1fa15c7eceb21ddf3c4
+

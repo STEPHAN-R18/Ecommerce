@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import API from "../api";
@@ -68,7 +68,7 @@ export default function Login() {
     </div>
   );
 }
-=======
+
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import API from "../api";
@@ -138,4 +138,4 @@ export default function Login() {
     </div>
   );
 }
->>>>>>> 72809590aa096b79a315a1fa15c7eceb21ddf3c4
+

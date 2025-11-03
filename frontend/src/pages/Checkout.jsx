@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import axios from "axios";
@@ -34,7 +34,7 @@ export default function Checkout() {
     </div>
   );
 }
-=======
+
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import axios from "axios";
@@ -70,4 +70,4 @@ export default function Checkout() {
     </div>
   );
 }
->>>>>>> 72809590aa096b79a315a1fa15c7eceb21ddf3c4
+

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Profile.css";
@@ -38,7 +38,7 @@ export default function Profile() {
     </div>
   );
 }
-=======
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Profile.css";
@@ -78,4 +78,4 @@ export default function Profile() {
     </div>
   );
 }
->>>>>>> 72809590aa096b79a315a1fa15c7eceb21ddf3c4
+

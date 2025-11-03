@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./Navbar.css";
@@ -126,7 +126,7 @@ export default function Navbar() {
     </header>
   );
 }
-=======
+
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./Navbar.css";
@@ -183,4 +183,4 @@ export default function Navbar() {
     </header>
   );
 }
->>>>>>> 72809590aa096b79a315a1fa15c7eceb21ddf3c4
+

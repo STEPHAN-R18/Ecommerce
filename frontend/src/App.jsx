@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetail";
@@ -43,7 +43,7 @@ export default function App() {
     </Router>
   );
 }
-=======
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ProductForm from "./pages/ProductForm";
@@ -81,4 +81,4 @@ export default function App() {
     </Router>
   );
 }
->>>>>>> 72809590aa096b79a315a1fa15c7eceb21ddf3c4
+

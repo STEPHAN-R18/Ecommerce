@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -64,7 +64,7 @@ router.post("/login", async (req, res) => {
 });
 
 export default router;
-=======
+
 import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -130,4 +130,4 @@ router.post("/login", async (req, res) => {
 });
 
 export default router;
->>>>>>> 72809590aa096b79a315a1fa15c7eceb21ddf3c4
+

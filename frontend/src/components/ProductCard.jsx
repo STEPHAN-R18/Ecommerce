@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import { Link } from "react-router-dom";
 import "../styles/app.css";
 
@@ -14,7 +14,7 @@ export default function ProductCard({ product }) {
     </div>
   );
 }
-=======
+
 import { Link } from "react-router-dom";
 import "../styles/app.css";
 
@@ -30,4 +30,4 @@ export default function ProductCard({ product }) {
     </div>
   );
 }
->>>>>>> 72809590aa096b79a315a1fa15c7eceb21ddf3c4
+
