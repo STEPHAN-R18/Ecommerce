@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Profile.css";
@@ -12,7 +11,7 @@ export default function Profile() {
     if (userData) {
       setUser(JSON.parse(userData));
     } else {
-      navigate("/login"); // Redirect if not logged in
+      navigate("/login");
     }
   }, [navigate]);
 
@@ -28,9 +27,10 @@ export default function Profile() {
     <div className="profile-container">
       <div className="profile-card">
         <h2>👤 Profile</h2>
-        <p><strong>Name:</strong> {user.name}</p>
-        <p><strong>Email:</strong> {user.email}</p>
-
+        <div className="profile-details">
+          <p><strong>Name:</strong> {user.name}</p>
+          <p><strong>Email:</strong> {user.email}</p>
+        </div>
         <button className="btn-logout" onClick={handleLogout}>
           Logout
         </button>
@@ -38,4 +38,3 @@ export default function Profile() {
     </div>
   );
 }
-

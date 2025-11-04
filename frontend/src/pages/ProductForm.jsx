@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/app.css";
+import "../pages/productForm.css"; // ✅ new responsive CSS
 
 export default function ProductForm() {
   const [form, setForm] = useState({ name: "", price: "", description: "", image: "" });
@@ -34,37 +35,39 @@ export default function ProductForm() {
   return (
     <>
       <Navbar />
-      <div className="form-container">
-        <h2>{id ? "Edit Product" : "Add Product"}</h2>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Product Name"
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            required
-          />
-          <input
-            type="number"
-            placeholder="Price"
-            value={form.price}
-            onChange={(e) => setForm({ ...form, price: e.target.value })}
-            required
-          />
-          <textarea
-            placeholder="Description"
-            value={form.description}
-            onChange={(e) => setForm({ ...form, description: e.target.value })}
-            required
-          />
-          <input
-            type="text"
-            placeholder="Image URL"
-            value={form.image}
-            onChange={(e) => setForm({ ...form, image: e.target.value })}
-          />
-          <button type="submit">{id ? "Update" : "Create"}</button>
-        </form>
+      <div className="form-wrapper">
+        <div className="form-container">
+          <h2>{id ? "Edit Product" : "Add Product"}</h2>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Product Name"
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              required
+            />
+            <input
+              type="number"
+              placeholder="Price"
+              value={form.price}
+              onChange={(e) => setForm({ ...form, price: e.target.value })}
+              required
+            />
+            <textarea
+              placeholder="Description"
+              value={form.description}
+              onChange={(e) => setForm({ ...form, description: e.target.value })}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Image URL"
+              value={form.image}
+              onChange={(e) => setForm({ ...form, image: e.target.value })}
+            />
+            <button type="submit">{id ? "Update" : "Create"}</button>
+          </form>
+        </div>
       </div>
       <Footer />
     </>

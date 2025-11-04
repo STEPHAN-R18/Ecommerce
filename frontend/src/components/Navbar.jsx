@@ -1,16 +1,17 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./Navbar.css";
+import { useFilters } from "../context/FilterContext";
 
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const [user, setUser] = useState(null);
   const [search, setSearch] = useState("");
-  const [showDropdown, setShowDropdown] = useState(false);
   const [cartCount, setCartCount] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { openFilters } = useFilters();
 
-  // 🟢 Load user & cart
   useEffect(() => {
     const token = localStorage.getItem("token");
     const userData = localStorage.getItem("user");
@@ -28,7 +29,6 @@ export default function Navbar() {
     return () => window.removeEventListener("cartUpdated", handleCartUpdate);
   }, []);
 
-  // 🟢 Keep search term visible when navigating back or reloading
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const query = params.get("search") || "";
@@ -42,24 +42,32 @@ export default function Navbar() {
     navigate("/login");
   };
 
-  // 🟢 Search trigger (icon click or Enter)
   const handleSearch = (e) => {
     e.preventDefault();
     const query = search.trim();
     if (query) navigate(`/?search=${encodeURIComponent(query)}`);
     else navigate("/");
   };
+
   return (
     <header className="navbar-dark">
       <div className="navbar-inner">
-        {/* LEFT */}
+        {/* LEFT SIDE */}
         <div className="navbar-left">
+          <button
+            className="filters-toggle-btn"
+            onClick={openFilters}
+            aria-label="Toggle filters"
+          >
+            ☰ Filters
+          </button>
+
           <Link to="/" className="navbar-logo">
             <span>ShopSmart</span>
           </Link>
         </div>
 
-        {/* CENTER - SEARCH */}
+        {/* CENTER */}
         <div className="navbar-center">
           <form className="nav-search" onSubmit={handleSearch}>
             <div className="search-wrapper">
@@ -79,20 +87,33 @@ export default function Navbar() {
           </form>
         </div>
 
-        {/* RIGHT */}
-        <div className="navbar-right">
+        {/* RIGHT SIDE */}
+        <div className={`navbar-right ${menuOpen ? "open" : ""}`}>
           {!user ? (
             <nav className="navbar-auth">
-              <Link to="/register" className="auth-link">Register</Link>
-              <Link to="/login" className="auth-link">Login</Link>
+              <Link
+                to="/register"
+                className="auth-link"
+                onClick={() => setMenuOpen(false)}
+              >
+                Register
+              </Link>
+              <Link
+                to="/login"
+                className="auth-link"
+                onClick={() => setMenuOpen(false)}
+              >
+                Login
+              </Link>
             </nav>
           ) : (
             <>
-              {/* 🧑 Profile */}
               <div
                 className="navbar-user"
-                onClick={() => navigate("/profile")}
-                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  navigate("/profile");
+                  setMenuOpen(false);
+                }}
               >
                 <img
                   src="https://static.vecteezy.com/system/resources/thumbnails/030/386/868/small/profiling-icon-vector.jpg"
@@ -102,8 +123,11 @@ export default function Navbar() {
                 <span className="user-name">Hi, {user.name || "User"}</span>
               </div>
 
-              {/* 🛒 Cart */}
-              <Link to="/cart" className="navbar-cart">
+              <Link
+                to="/cart"
+                className="navbar-cart"
+                onClick={() => setMenuOpen(false)}
+              >
                 <div className="cart-icon-wrap">
                   <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQyr6OxhyD7jjWxj0Qi3hd8dwFW1w5nxrCS7R2i1Ay47zVTIIUE7qQoRyg8NpRgcRVV38&usqp=CAU"
@@ -117,13 +141,26 @@ export default function Navbar() {
                 <span className="cart-text">Cart</span>
               </Link>
 
-              {/* 🚪 Logout */}
               <button className="logout-btn" onClick={handleLogout}>
                 Logout
               </button>
             </>
           )}
         </div>
+
+        {/* 📱 Mobile menu icon */}
+        <div
+          className={`menu-icon ${menuOpen ? "active" : ""}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          ☰
+        </div>
       </div>
+
+      {/* Background overlay when menu open */}
+      {menuOpen && (
+        <div className="menu-overlay" onClick={() => setMenuOpen(false)}></div>
+      )}
     </header>
-  );}
+  );
+}

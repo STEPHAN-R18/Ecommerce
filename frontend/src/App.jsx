@@ -13,10 +13,13 @@ import Profile from "./pages/Profile.jsx";
 import PaymentPage from "./pages/PaymentPage";
 import CartPage from "./pages/CartPage";
 import AuthPage from "./pages/AuthPage";
+import { FilterProvider } from "./context/FilterContext";
+import "./pages/Responsive.css";
 
 export default function App() {
   return (
     <Router>
+      <FilterProvider>
       <Navbar />
       <Routes>
         <Route path="/product/:id" element={<ProductDetails />} />
@@ -39,6 +42,8 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
+      </FilterProvider>
+
       <Footer />
     </Router>
   );

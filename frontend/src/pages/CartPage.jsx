@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CartPage.css";
@@ -19,7 +18,7 @@ export default function CartPage() {
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
 
-    // 🔔 Instantly refresh navbar cart count
+    // 🔔 Refresh navbar cart count
     window.dispatchEvent(new Event("cartUpdated"));
   };
 

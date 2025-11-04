@@ -1,44 +1,39 @@
 .home-container {
   font-family: "Poppins", sans-serif;
-  padding: 2rem;
+  padding: 1.5rem;
   background: #f8fafc;
   min-height: 100vh;
 }
 
+/* ================= Hero Section ================= */
 .hero-section {
   text-align: center;
-  margin-bottom: 2rem;
+  padding: 60px 20px;
+  background: linear-gradient(to right, #111, #222);
+  color: #f5f5f5;
+  border-radius: 12px;
+  margin: 20px auto 40px;
+  max-width: 900px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 .hero-text h1 {
-  font-size: 2.5rem;
-  color: #222;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #f0c14b;
+  margin-bottom: 10px;
 }
 
 .hero-text p {
-  color: #666;
   font-size: 1.1rem;
+  color: #ddd;
+  letter-spacing: 0.5px;
 }
 
-.filters-inline {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.search-input,
-.category-select {
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
+/* ================= Product Grid ================= */
 .product-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
 }
@@ -80,63 +75,30 @@
   margin-bottom: 1rem;
 }
 
-.product-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 0.8rem;
-}
-
-.btn-buy-now {
-  background: #0d6efd;
-  color: white;
-  border: none;
-  padding: 0.6rem 1.1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: 0.3s ease;
-}
-
-.btn-buy-now:hover {
-  background: #0a58ca;
-}
-
-.btn-add-cart {
-  background: #22c55e;
-  color: white;
-  border: none;
-  padding: 0.6rem 1.1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: 0.3s ease;
-}
-
-.btn-add-cart:hover {
-  background: #16a34a;
-}
-
-.no-products {
-  text-align: center;
-  font-size: 1.1rem;
-  color: #666;
-}
-/* Buttons */
+/* ================= Buttons ================= */
 .button-group {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin-top: 10px;
+  justify-content: center;
 }
 
-.btn-buy {
-  background: linear-gradient(90deg, #007bff, #0056d8);
-  color: white;
+.btn-buy,
+.btn-addcart,
+.btn-viewdetails {
   border: none;
   padding: 10px 14px;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
+  flex: 1 1 45%;
+}
+
+.btn-buy {
+  background: linear-gradient(90deg, #007bff, #0056d8);
+  color: white;
 }
 
 .btn-buy:hover {
@@ -147,12 +109,6 @@
 .btn-addcart {
   background: #ff9800;
   color: white;
-  border: none;
-  padding: 10px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
 }
 
 .btn-addcart:hover {
@@ -160,26 +116,24 @@
   transform: scale(1.05);
 }
 
-.product-price {
-  font-size: 18px;
-  font-weight: 700;
-  margin-top: 5px;
-}
 .btn-viewdetails {
   background: #2874f0;
   color: white;
-  border: none;
-  padding: 10px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
 }
 
 .btn-viewdetails:hover {
   background: #0b59d0;
   transform: scale(1.05);
 }
+
+.no-products {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+  margin-top: 2rem;
+}
+
+/* ================= Filters ================= */
 .category-filter {
   display: flex;
   flex-direction: column;
@@ -225,3 +179,65 @@
   color: #333;
 }
 
+/* ================= Responsive Design ================= */
+
+/* 🔹 Medium screens (tablets) */
+@media (max-width: 992px) {
+  .hero-section {
+    padding: 40px 16px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .product-list {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+/* 🔹 Small screens (phones) */
+@media (max-width: 600px) {
+  .home-container {
+    padding: 1rem;
+  }
+
+  .hero-section {
+    padding: 30px 15px;
+    margin: 10px 0 25px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.5rem;
+    margin-left: 0;
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+    margin-left: 0;
+  }
+
+  .product-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .product-image {
+    height: 180px;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .btn-buy,
+  .btn-addcart,
+  .btn-viewdetails {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+}

@@ -138,3 +138,67 @@
 .btn-checkout:hover {
   background: #15803d;
 }
+
+/* ============================= */
+/* 📱 RESPONSIVE DESIGN */
+/* ============================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .cart-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cart-summary {
+    width: 100%;
+    max-width: 500px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .cart-container {
+    padding: 1rem;
+  }
+
+  .cart-title {
+    font-size: 1.8rem;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cart-item-image {
+    width: 100px;
+    height: 100px;
+    margin: 0 0 1rem 0;
+  }
+
+  .cart-item-details h3 {
+    font-size: 1rem;
+  }
+
+  .cart-summary {
+    width: 100%;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+  .cart-title {
+    font-size: 1.6rem;
+  }
+
+  .btn-continue,
+  .btn-checkout {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .cart-item {
+    padding: 0.8rem;
+  }
+}

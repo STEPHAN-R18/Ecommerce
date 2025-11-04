@@ -1,160 +1,145 @@
-import React, { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import "./FilterSidebar.css";
 
-const ALL_CATEGORIES = [
-  { id: "electronics", label: "Electronics" },
-  { id: "fashion", label: "Fashion" },
-  { id: "books", label: "Books" },
-  { id: "home", label: "Home & Kitchen" },
-];
-
-export default function FilterSidebar({ open = false, onClose, onApply, onClear, initialFilters }) {
-  const [local, setLocal] = useState({
-    categories: [],
-    priceMin: "",
-    priceMax: "",
-    rating: "",
-    sortBy: "",
-    search: "",
-  });
+export default function FilterSidebar({
+  open,
+  onClose,
+  onApply,
+  onClear,
+  initialFilters,
+}) {
+  const [localFilters, setLocalFilters] = useState(initialFilters);
 
   useEffect(() => {
-    if (initialFilters) setLocal(initialFilters);
+    setLocalFilters(initialFilters);
   }, [initialFilters]);
 
-  const toggleCategory = (catId) => {
-    setLocal((prev) => {
-      const exists = prev.categories.includes(catId);
-      const categories = exists ? prev.categories.filter((c) => c !== catId) : [...prev.categories, catId];
-      return { ...prev, categories };
+  const handleCategoryChange = (category) => {
+    setLocalFilters((prev) => {
+      const exists = prev.categories.includes(category);
+      return {
+        ...prev,
+        categories: exists
+          ? prev.categories.filter((c) => c !== category)
+          : [...prev.categories, category],
+      };
     });
   };
 
-  const handleApply = () => {
-    // Make sure numeric fields are trimmed
-    const payload = {
-      categories: local.categories,
-      priceMin: local.priceMin,
-      priceMax: local.priceMax,
-      rating: local.rating,
-      sortBy: local.sortBy,
-      search: local.search,
-    };
-    onApply && onApply(payload);
-  };
-
+  const handleApply = () => onApply(localFilters);
   const handleClear = () => {
-    const cleared = {
+    setLocalFilters({
       categories: [],
       priceMin: "",
       priceMax: "",
       rating: "",
       sortBy: "",
       search: "",
-    };
-    setLocal(cleared);
-    onClear && onClear();
+    });
+    onClear();
   };
 
+  const categories = ["Electronics", "Fashion", "Home", "Sports", "Books"];
+
   return (
-    <>
-      <div className={`filter-backdrop ${open ? "visible" : ""}`} onClick={onClose} />
-      <aside className={`filter-sidebar ${open ? "open" : ""}`} aria-hidden={!open}>
-        <div className="filter-header">
-          <h3>Filters</h3>
-          <button className="close-btn" onClick={onClose} aria-label="Close filters">
-            ✕
-          </button>
-        </div>
+    <div className={`filter-sidebar ${open ? "open" : ""}`}>
+      <div className="filter-header">
+        <h2>Filters</h2>
+        <button className="close-btn" onClick={onClose}>
+          ✕
+        </button>
+      </div>
 
+      <div className="filter-body">
+        {/* Category */}
         <div className="filter-section">
-          <label className="filter-label">Search</label>
-          <input
-            type="text"
-            placeholder="Search products..."
-            value={local.search}
-            onChange={(e) => setLocal((p) => ({ ...p, search: e.target.value }))}
-            className="filter-input"
-          />
-        </div>
-
-        <div className="filter-section">
-          <label className="filter-label">Categories</label>
-          <div className="categories-list">
-            {ALL_CATEGORIES.map((c) => (
-              <label key={c.id} className="category-item">
+          <h4>Category</h4>
+          <div className="filter-options">
+            {categories.map((cat) => (
+              <label key={cat} className="filter-checkbox">
                 <input
                   type="checkbox"
-                  checked={local.categories.includes(c.id)}
-                  onChange={() => toggleCategory(c.id)}
+                  checked={localFilters.categories.includes(cat)}
+                  onChange={() => handleCategoryChange(cat)}
                 />
-                <span>{c.label}</span>
+                {cat}
               </label>
             ))}
           </div>
         </div>
 
+        {/* Price Range */}
         <div className="filter-section">
-          <label className="filter-label">Price Range (₹)</label>
-          <div className="price-row">
+          <h4>Price Range (₹)</h4>
+          <div className="price-inputs">
             <input
               type="number"
-              min="0"
               placeholder="Min"
-              value={local.priceMin}
-              onChange={(e) => setLocal((p) => ({ ...p, priceMin: e.target.value }))}
-              className="price-input"
+              value={localFilters.priceMin}
+              onChange={(e) =>
+                setLocalFilters((prev) => ({
+                  ...prev,
+                  priceMin: e.target.value,
+                }))
+              }
             />
-            <span className="price-sep">—</span>
+            <span className="dash">–</span>
             <input
               type="number"
-              min="0"
               placeholder="Max"
-              value={local.priceMax}
-              onChange={(e) => setLocal((p) => ({ ...p, priceMax: e.target.value }))}
-              className="price-input"
+              value={localFilters.priceMax}
+              onChange={(e) =>
+                setLocalFilters((prev) => ({
+                  ...prev,
+                  priceMax: e.target.value,
+                }))
+              }
             />
           </div>
         </div>
 
+        {/* Rating */}
         <div className="filter-section">
-          <label className="filter-label">Rating</label>
+          <h4>Minimum Rating</h4>
           <select
-            value={local.rating}
-            onChange={(e) => setLocal((p) => ({ ...p, rating: e.target.value }))}
-            className="filter-select"
+            value={localFilters.rating}
+            onChange={(e) =>
+              setLocalFilters((prev) => ({ ...prev, rating: e.target.value }))
+            }
           >
-            <option value="">Any</option>
-            <option value="4">4 ★ & up</option>
-            <option value="3">3 ★ & up</option>
-            <option value="2">2 ★ & up</option>
-            <option value="1">1 ★ & up</option>
+            <option value="">All Ratings</option>
+            <option value="4">4 ★ & above</option>
+            <option value="3">3 ★ & above</option>
+            <option value="2">2 ★ & above</option>
+            <option value="1">1 ★ & above</option>
           </select>
         </div>
 
+        {/* Sort By */}
         <div className="filter-section">
-          <label className="filter-label">Sort by</label>
+          <h4>Sort By</h4>
           <select
-            value={local.sortBy}
-            onChange={(e) => setLocal((p) => ({ ...p, sortBy: e.target.value }))}
-            className="filter-select"
+            value={localFilters.sortBy}
+            onChange={(e) =>
+              setLocalFilters((prev) => ({ ...prev, sortBy: e.target.value }))
+            }
           >
-            <option value="">Relevance</option>
-            <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc">Price: High to Low</option>
-            <option value="newest">Newest</option>
+            <option value="">Default</option>
+            <option value="price-asc">Price: Low → High</option>
+            <option value="price-desc">Price: High → Low</option>
+            <option value="newest">Newest Arrivals</option>
           </select>
         </div>
+      </div>
 
-        <div className="filter-actions">
-          <button className="btn-apply" onClick={handleApply}>
-            Apply
-          </button>
-          <button className="btn-clear" onClick={handleClear}>
-            Clear
-          </button>
-        </div>
-      </aside>
-    </>
+      <div className="filter-footer">
+        <button className="btn-clear" onClick={handleClear}>
+          Clear
+        </button>
+        <button className="btn-apply" onClick={handleApply}>
+          Apply
+        </button>
+      </div>
+    </div>
   );
 }

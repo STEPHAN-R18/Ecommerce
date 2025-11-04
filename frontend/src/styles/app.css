@@ -117,3 +117,102 @@ body {
   font-size: 1rem;
   margin-top: 2rem;
 }
+
+/* --- Container --- */
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* ------------------------------
+   📱 Responsive Media Queries
+--------------------------------*/
+
+/* Tablets (≤ 991px) */
+@media (max-width: 991px) {
+  .home-container {
+    padding: 30px 15px;
+  }
+
+  .home-title {
+    font-size: 1.8rem;
+  }
+
+  .product-card {
+    width: 200px;
+    padding: 1.2rem;
+  }
+
+  .product-card img {
+    width: 130px;
+    height: 130px;
+  }
+
+  .button-group {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+/* Phones (≤ 767px) */
+@media (max-width: 767px) {
+  .home-container {
+    padding: 25px 12px;
+  }
+
+  .home-title {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .product-card {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .product-card img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .btn {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Small Phones (≤ 480px) */
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-title {
+    font-size: 1.4rem;
+  }
+
+  .product-card img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .product-card {
+    padding: 0.8rem;
+  }
+
+  .btn {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 0.7rem;
+  }
+}
