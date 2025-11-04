@@ -132,7 +132,7 @@ export default function Home() {
       />
 
       <header className="hero-section">
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+        <div >
           <div className="hero-text">
             <h1>Welcome to ShopSmart 🛍️</h1>
             <p>Discover our curated collection of the latest products.</p>

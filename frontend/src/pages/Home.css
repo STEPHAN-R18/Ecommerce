@@ -206,20 +206,51 @@
     padding: 1rem;
   }
 
+ /* ================= Hero Section ================= */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centers vertically */
+  align-items: center; /* centers horizontally */
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(to right, #111, #222);
+  color: #f5f5f5;
+  border-radius: 12px;
+  margin: 20px auto 40px;
+  max-width: 900px;
+  min-height: 300px; /* ✅ ensures enough height for vertical centering */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.hero-text h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #f0c14b;
+  margin-bottom: 10px;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  color: #ddd;
+  letter-spacing: 0.5px;
+}
+
+/* 🔹 Small screens (phones) */
+@media (max-width: 600px) {
   .hero-section {
-    padding: 30px 15px;
-    margin: 10px 0 25px;
+    padding: 60px 20px;
+    min-height: 250px;
   }
 
   .hero-text h1 {
-    font-size: 1.5rem;
-    margin-left: 0;
+    font-size: 1.6rem;
   }
 
   .hero-text p {
-    font-size: 0.95rem;
-    margin-left: 0;
+    font-size: 1rem;
   }
+}
 
   .product-list {
     grid-template-columns: 1fr;
