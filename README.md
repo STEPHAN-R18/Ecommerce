@@ -1,4 +1,4 @@
-DEMO : https://ecommerce-frontend-m28r.onrender.com/register
+DEMO (render):https://ecommerce-frontend-m28r.onrender.com/
 ## ⚙️ Tech Stack
 
 Frontend:  
