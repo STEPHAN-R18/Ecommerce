@@ -9,21 +9,45 @@ import paymentRoutes from "./routes/payment.js";
 
 dotenv.config();
 
-const app = express(); // ✅ must come before app.use()
+const app = express();
 
-app.use(cors());
+// ✅ Correct CORS setup
+const allowedOrigins = [
+  "https://ecommerce-frontend-m28r.onrender.com", // your deployed frontend
+  "http://localhost:5173", // for local dev (optional)
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
-// ✅ API Routes
+// ✅ Routes
 app.use("/api/products", productRoutes);
 app.use("/api/auth", authRoutes);
-app.use("/api/payment", paymentRoutes); // ✅ moved here
+app.use("/api/payment", paymentRoutes);
+
+// ✅ Simple test route
+app.get("/", (req, res) => {
+  res.send("Backend is running successfully!");
+});
 
 // ✅ MongoDB connection
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.log(err));
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch((err) => console.log("❌ MongoDB error:", err));
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
