@@ -1,4 +1,10 @@
-Website screenshot ![image alt](https://github.com/STEPHAN-R18/Ecommerce/blob/master/Screenshot%20(6).png?raw=true)
+Screenshots of website
+
+![image alt](https://github.com/STEPHAN-R18/Ecommerce/blob/master/Screenshot%202025-11-05%20220736.png?raw=true)
+![image alt](https://github.com/STEPHAN-R18/Ecommerce/blob/master/Screenshot%202025-11-05%20220625.png?raw=true)
+![image alt](https://github.com/STEPHAN-R18/Ecommerce/blob/master/Screenshot%202025-11-05%20220857.png?raw=true)
+![image alt](https://github.com/STEPHAN-R18/Ecommerce/blob/master/Screenshot%202025-11-05%20221135.png?raw=true)
+
 ## ⚙️ Tech Stack
 
 Frontend:  
