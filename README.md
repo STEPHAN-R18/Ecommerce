@@ -1,4 +1,4 @@
-Website screenshot !{image alt}(https://github.com/STEPHAN-R18/Ecommerce/blob/master/Screenshot%20(6).png?raw=true)
+Website screenshot ![image alt](https://github.com/STEPHAN-R18/Ecommerce/blob/master/Screenshot%20(6).png?raw=true)
 ## ⚙️ Tech Stack
 
 Frontend:  
