@@ -1,10 +1,4 @@
-Libe Demo : https://ecommerce-frontend-m28r.onrender.com/
-Screenshots of website
-![image alt](https://github.com/STEPHAN-R18/Ecommerce/blob/master/Screenshot%202025-11-05%20220736.png?raw=true)
-![image alt](https://github.com/STEPHAN-R18/Ecommerce/blob/master/Screenshot%202025-11-05%20220625.png?raw=true)
-![image alt](https://github.com/STEPHAN-R18/Ecommerce/blob/master/Screenshot%202025-11-05%20220857.png?raw=true)
-![image alt](https://github.com/STEPHAN-R18/Ecommerce/blob/master/Screenshot%202025-11-05%20221135.png?raw=true)
-
+Screenshots of website = https://drive.google.com/drive/folders/16fq5oEbzcXlLB3Jo8cYeo6tOTBHf977k?usp=sharing
 ## ⚙️ Tech Stack
 
 Frontend:  
