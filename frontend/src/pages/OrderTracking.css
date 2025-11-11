@@ -1,0 +1,52 @@
+.order-tracking {
+  text-align: center;
+  padding: 2rem;
+  background: #f7f9fc;
+  min-height: 100vh;
+}
+
+.order-tracking h2 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.order-info {
+  margin-bottom: 2rem;
+}
+
+.tracking-steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+}
+
+.step.active {
+  color: #2563eb;
+}
+
+.dot {
+  width: 24px;
+  height: 24px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.status-text {
+  font-size: 1rem;
+  color: #444;
+  margin-top: 1rem;
+}
